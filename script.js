@@ -1,10 +1,3 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
-diff --git a/script.js b/script.js
-new file mode 100644
-index 0000000000000000000000000000000000000000..a73df8259e33013cb18d67bc10a208147795bd21
---- /dev/null
-+++ b/script.js
-@@ -0,0 +1,174 @@
 +const form = document.getElementById('music-theory-test');
 +const results = document.getElementById('results');
 +const scoreLine = document.getElementById('score-line');
@@ -179,6 +172,3 @@ index 0000000000000000000000000000000000000000..a73df8259e33013cb18d67bc10a20814
 +  info.textContent = `Vorige poging: ${percentage}% behaald op ${finished}.`;
 +  document.querySelector('.hero').appendChild(info);
 +}
- 
-EOF
-)
