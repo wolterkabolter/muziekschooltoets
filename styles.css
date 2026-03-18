@@ -1,0 +1,270 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/styles.css b/styles.css
+new file mode 100644
+index 0000000000000000000000000000000000000000..1a66c29c0dbaba28542a45db38de86d40e0f9c85
+--- /dev/null
++++ b/styles.css
+@@ -0,0 +1,260 @@
++:root {
++  --bg: #f5f1ea;
++  --card: #fffdf9;
++  --ink: #1f2933;
++  --muted: #52606d;
++  --accent: #7c3aed;
++  --accent-soft: #efe7ff;
++  --success: #147d64;
++  --error: #c81e1e;
++  --border: #d9d4cb;
++  --shadow: 0 16px 40px rgba(31, 41, 51, 0.08);
++}
++
++* {
++  box-sizing: border-box;
++}
++
++body {
++  margin: 0;
++  font-family: Inter, Arial, sans-serif;
++  background: linear-gradient(180deg, #f8f5ef 0%, #efe8dc 100%);
++  color: var(--ink);
++}
++
++.page {
++  width: min(1100px, calc(100vw - 2rem));
++  margin: 0 auto;
++  padding: 2rem 0 4rem;
++}
++
++.hero {
++  display: grid;
++  grid-template-columns: 2fr 1fr;
++  gap: 1.5rem;
++  align-items: stretch;
++  margin-bottom: 2rem;
++}
++
++.eyebrow {
++  text-transform: uppercase;
++  letter-spacing: 0.08em;
++  color: var(--accent);
++  font-weight: 700;
++  margin-bottom: 0.5rem;
++}
++
++h1,
++h2 {
++  font-family: Georgia, "Times New Roman", serif;
++  margin: 0;
++}
++
++h1 {
++  font-size: clamp(2rem, 4vw, 3.2rem);
++  margin-bottom: 0.75rem;
++}
++
++.intro,
++.section-heading p,
++.hero-card li,
++.question-row p,
++.results p {
++  color: var(--muted);
++  line-height: 1.6;
++}
++
++.hero-card,
++.card,
++.results {
++  background: var(--card);
++  border: 1px solid var(--border);
++  border-radius: 24px;
++  box-shadow: var(--shadow);
++}
++
++.hero-card {
++  padding: 1.5rem;
++}
++
++.hero-card ul {
++  padding-left: 1.2rem;
++  margin-bottom: 0;
++}
++
++.card,
++.results {
++  padding: 1.5rem;
++  margin-bottom: 1.25rem;
++}
++
++.section-heading {
++  display: flex;
++  align-items: flex-start;
++  gap: 1rem;
++  margin-bottom: 1.25rem;
++}
++
++.badge {
++  display: inline-flex;
++  align-items: center;
++  justify-content: center;
++  width: 2.25rem;
++  height: 2.25rem;
++  border-radius: 999px;
++  background: var(--accent-soft);
++  color: var(--accent);
++  font-weight: 700;
++  flex-shrink: 0;
++}
++
++.question-grid,
++.question-list,
++.triad-grid {
++  display: grid;
++  gap: 1rem;
++}
++
++.question-grid {
++  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
++}
++
++.triad-grid {
++  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
++}
++
++.field {
++  display: grid;
++  gap: 0.45rem;
++  font-weight: 600;
++}
++
++.field.small {
++  min-width: 180px;
++}
++
++input[type="text"] {
++  width: 100%;
++  padding: 0.85rem 1rem;
++  border: 1px solid var(--border);
++  border-radius: 14px;
++  font: inherit;
++  color: var(--ink);
++  background: #fff;
++}
++
++input[type="text"]:focus {
++  outline: 3px solid rgba(124, 58, 237, 0.15);
++  border-color: var(--accent);
++}
++
++.question-block {
++  border: 1px solid var(--border);
++  border-radius: 18px;
++  padding: 1rem;
++  display: grid;
++  gap: 0.75rem;
++}
++
++.question-block legend {
++  font-weight: 700;
++  padding: 0 0.35rem;
++}
++
++.question-block label {
++  display: flex;
++  align-items: center;
++  gap: 0.6rem;
++}
++
++.question-row {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 1rem;
++  align-items: end;
++  border: 1px dashed var(--border);
++  border-radius: 18px;
++  padding: 1rem;
++}
++
++.question-row p {
++  flex: 1 1 220px;
++  margin: 0;
++}
++
++.actions {
++  display: flex;
++  gap: 1rem;
++  justify-content: flex-start;
++  margin: 2rem 0 1rem;
++}
++
++button {
++  border: 0;
++  border-radius: 999px;
++  padding: 0.95rem 1.4rem;
++  font: inherit;
++  font-weight: 700;
++  cursor: pointer;
++}
++
++.primary {
++  background: var(--accent);
++  color: white;
++}
++
++.secondary {
++  background: #e9e3d8;
++  color: var(--ink);
++}
++
++.results.hidden {
++  display: none;
++}
++
++.feedback-list {
++  display: grid;
++  gap: 0.85rem;
++}
++
++.feedback-item {
++  padding: 0.9rem 1rem;
++  border-radius: 14px;
++  border-left: 6px solid var(--success);
++  background: #f2fcf9;
++}
++
++.feedback-item.error {
++  border-left-color: var(--error);
++  background: #fff2f2;
++}
++
++.correct-answer {
++  display: block;
++  color: var(--muted);
++  margin-top: 0.35rem;
++}
++
++.is-correct {
++  border-color: rgba(20, 125, 100, 0.45) !important;
++  background: rgba(20, 125, 100, 0.04);
++}
++
++.is-incorrect {
++  border-color: rgba(200, 30, 30, 0.45) !important;
++  background: rgba(200, 30, 30, 0.04);
++}
++
++@media (max-width: 800px) {
++  .hero {
++    grid-template-columns: 1fr;
++  }
++
++  .actions {
++    flex-direction: column;
++  }
++
++  button {
++    width: 100%;
++  }
++}
+ 
+EOF
+)
