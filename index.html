@@ -1,0 +1,225 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..a4a4deb94d9067d30553a668ffbf5e74a0feb7cc
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,215 @@
++<!DOCTYPE html>
++<html lang="nl">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>Muziekschooltoets - Grote toonaarden en drieklanken</title>
++    <link rel="stylesheet" href="styles.css" />
++  </head>
++  <body>
++    <main class="page">
++      <header class="hero">
++        <div>
++          <p class="eyebrow">Online oefentoets</p>
++          <h1>Grote toonaarden + drieklanken</h1>
++          <p class="intro">
++            Oefen zelfstandig op notennamen, wijzigingstekens, toonaarden en grote/
++            kleine drieklanken. Je krijgt meteen feedback en een score op 100.
++          </p>
++        </div>
++        <div class="hero-card">
++          <p><strong>Inhoud</strong></p>
++          <ul>
++            <li>Volgorde van kruisen en mollen</li>
++            <li>Notennamen en wijzigingstekens</li>
++            <li>Toonaarden herkennen</li>
++            <li>Grote of kleine drieklanken</li>
++          </ul>
++        </div>
++      </header>
++
++      <form id="music-theory-test" novalidate>
++        <section class="card">
++          <div class="section-heading">
++            <span class="badge">1</span>
++            <div>
++              <h2>Volgorde van kruisen en mollen</h2>
++              <p>Schrijf de juiste volgorde zoals op het blad.</p>
++            </div>
++          </div>
++
++          <div class="question-grid">
++            <label class="field">
++              <span>Volgorde van de kruisen</span>
++              <input
++                type="text"
++                name="sharps-order"
++                data-answer="fis cis gis dis ais eis bis"
++                placeholder="bijv. fis cis ..."
++              />
++            </label>
++            <label class="field">
++              <span>Volgorde van de mollen</span>
++              <input
++                type="text"
++                name="flats-order"
++                data-answer="bes es as des ges ces fes"
++                placeholder="bijv. bes es ..."
++              />
++            </label>
++          </div>
++        </section>
++
++        <section class="card">
++          <div class="section-heading">
++            <span class="badge">2</span>
++            <div>
++              <h2>Notennamen en wijzigingstekens</h2>
++              <p>Kies telkens het juiste antwoord.</p>
++            </div>
++          </div>
++
++          <div class="question-list">
++            <fieldset class="question-block" data-correct="b">
++              <legend>Welke reeks toont de notennamen in stijgende volgorde?</legend>
++              <label><input type="radio" name="note-names" value="a" /> do re mi fa sol la si</label>
++              <label><input type="radio" name="note-names" value="b" /> c d e f g a b c</label>
++              <label><input type="radio" name="note-names" value="c" /> c e g b d f a</label>
++            </fieldset>
++
++            <fieldset class="question-block" data-correct="c">
++              <legend>Welke nootnaam hoort bij een verhoogde F?</legend>
++              <label><input type="radio" name="raised-f" value="a" /> fes</label>
++              <label><input type="radio" name="raised-f" value="b" /> fan</label>
++              <label><input type="radio" name="raised-f" value="c" /> fis</label>
++            </fieldset>
++
++            <fieldset class="question-block" data-correct="a">
++              <legend>Welke nootnaam hoort bij een verlaagde B?</legend>
++              <label><input type="radio" name="lowered-b" value="a" /> bes</label>
++              <label><input type="radio" name="lowered-b" value="b" /> bis</label>
++              <label><input type="radio" name="lowered-b" value="c" /> b</label>
++            </fieldset>
++          </div>
++        </section>
++
++        <section class="card">
++          <div class="section-heading">
++            <span class="badge">3</span>
++            <div>
++              <h2>In welke toonaard staat de oefening?</h2>
++              <p>
++                Koppel de voortekens aan de juiste grote toonaard en noteer ook de
++                letterbenaming.
++              </p>
++            </div>
++          </div>
++
++          <div class="question-list">
++            <div class="question-row">
++              <p><strong>a.</strong> 1 mol (bes)</p>
++              <label class="field small">
++                <span>Toonaard</span>
++                <input type="text" name="key-a-name" data-answer="fa groot" placeholder="bijv. fa groot" />
++              </label>
++              <label class="field small">
++                <span>Letterbenaming</span>
++                <input type="text" name="key-a-letter" data-answer="f" placeholder="bijv. F" />
++              </label>
++            </div>
++
++            <div class="question-row">
++              <p><strong>b.</strong> 4 kruisen (fis, cis, gis, dis)</p>
++              <label class="field small">
++                <span>Toonaard</span>
++                <input type="text" name="key-b-name" data-answer="mi groot" placeholder="bijv. mi groot" />
++              </label>
++              <label class="field small">
++                <span>Letterbenaming</span>
++                <input type="text" name="key-b-letter" data-answer="e" placeholder="bijv. E" />
++              </label>
++            </div>
++
++            <div class="question-row">
++              <p><strong>c.</strong> 6 mollen (bes, es, as, des, ges, ces)</p>
++              <label class="field small">
++                <span>Toonaard</span>
++                <input type="text" name="key-c-name" data-answer="ges groot" placeholder="bijv. ges groot" />
++              </label>
++              <label class="field small">
++                <span>Letterbenaming</span>
++                <input type="text" name="key-c-letter" data-answer="ges" placeholder="bijv. Ges" />
++              </label>
++            </div>
++          </div>
++        </section>
++
++        <section class="card">
++          <div class="section-heading">
++            <span class="badge">4</span>
++            <div>
++              <h2>Grote of kleine drieklank?</h2>
++              <p>Duid aan of de drieklank groot of klein is en kies de letterbenaming.</p>
++            </div>
++          </div>
++
++          <div class="triad-grid">
++            <fieldset class="question-block compact" data-correct="major-g">
++              <legend>G - B - D</legend>
++              <label><input type="radio" name="triad-1" value="major-g" /> Groot (G)</label>
++              <label><input type="radio" name="triad-1" value="minor-g" /> Klein (Gm)</label>
++            </fieldset>
++
++            <fieldset class="question-block compact" data-correct="minor-e">
++              <legend>E - G - B</legend>
++              <label><input type="radio" name="triad-2" value="major-e" /> Groot (E)</label>
++              <label><input type="radio" name="triad-2" value="minor-e" /> Klein (Em)</label>
++            </fieldset>
++
++            <fieldset class="question-block compact" data-correct="major-f">
++              <legend>F - A - C</legend>
++              <label><input type="radio" name="triad-3" value="major-f" /> Groot (F)</label>
++              <label><input type="radio" name="triad-3" value="minor-f" /> Klein (Fm)</label>
++            </fieldset>
++
++            <fieldset class="question-block compact" data-correct="minor-a">
++              <legend>A - C - E</legend>
++              <label><input type="radio" name="triad-4" value="major-a" /> Groot (A)</label>
++              <label><input type="radio" name="triad-4" value="minor-a" /> Klein (Am)</label>
++            </fieldset>
++          </div>
++        </section>
++
++        <section class="card bonus">
++          <div class="section-heading">
++            <span class="badge">5</span>
++            <div>
++              <h2>Samenvattende controlevraag</h2>
++              <p>Sleep de geleerde termen mentaal samen en beantwoord nog één vraag.</p>
++            </div>
++          </div>
++
++          <fieldset class="question-block" data-correct="b">
++            <legend>Welke uitspraak is juist?</legend>
++            <label><input type="radio" name="summary" value="a" /> Een kleine drieklank bestaat uit twee grote tertsen.</label>
++            <label><input type="radio" name="summary" value="b" /> In Sol groot staan één kruis en de tonen van de G-drieklank zijn G-B-D.</label>
++            <label><input type="radio" name="summary" value="c" /> In Fa groot staan drie kruisen.</label>
++          </fieldset>
++        </section>
++
++        <section class="actions">
++          <button type="submit" class="primary">Verbeter mijn toets</button>
++          <button type="button" id="reset-test" class="secondary">Opnieuw beginnen</button>
++        </section>
++      </form>
++
++      <section id="results" class="results hidden" aria-live="polite">
++        <h2>Resultaat</h2>
++        <p id="score-line"></p>
++        <div id="feedback-list" class="feedback-list"></div>
++      </section>
++    </main>
++
++    <script src="script.js"></script>
++  </body>
++</html>
+ 
+EOF
+)
